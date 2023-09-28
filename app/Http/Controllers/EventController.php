@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Country;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -20,7 +22,10 @@ class EventController extends Controller
      */
     public function create(): View
     {
-        return view('events.create');
+        $countries = Country::all();
+        // $tags = Tag::all();
+
+        return view('events.create', compact('countries'));
     }
 
     /**

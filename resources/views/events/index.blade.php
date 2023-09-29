@@ -52,8 +52,9 @@
                                             @csrf
                                             @method('DELETE')
                                             <a href="{{ route('events.destroy', $event) }}"
-                                                onclick="event.preventDefault();
-                                                            this.closest('form').submit();">
+                                                onclick="event.preventDefault(); confirm('Are you sure?');
+                                                            this.closest('form').submit();"
+                                                >
                                                 Delete
                                             </a>
                                         </form>

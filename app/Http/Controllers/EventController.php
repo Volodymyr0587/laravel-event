@@ -27,9 +27,9 @@ class EventController extends Controller
     public function create(): View
     {
         $countries = Country::all();
-        // $tags = Tag::all();
+        $tags = Tag::all();
 
-        return view('events.create', compact('countries'));
+        return view('events.create', compact('countries', 'tags'));
     }
 
     /**
@@ -44,7 +44,9 @@ class EventController extends Controller
             $data['user_id'] = auth()->id();
             $data['slug'] = Str::slug($request->title);
 
-            Event::create($data);
+            $event = Event::create($data);
+            $event->tags()->attach($request->tags);
+
             return to_route('events.index');
         } else {
             return back();

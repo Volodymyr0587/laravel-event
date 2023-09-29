@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Tag;
 use App\Models\Event;
 use App\Models\Country;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -37,7 +38,7 @@ class EventController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(CreateEventRequest $request)
+    public function store(CreateEventRequest $request): RedirectResponse
     {
         if ($request->hasFile('image')) {
 
@@ -66,15 +67,18 @@ class EventController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Event $event): View
     {
-        //
+        $countries = Country::all();
+        $tags = Tag::all();
+
+        return view('events.edit', compact('countries', 'tags', 'event'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Event $event)
     {
         //
     }

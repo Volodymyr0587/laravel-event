@@ -33,7 +33,7 @@
                                 <th scope="row"
                                     class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                     <img src="{{ asset('storage/' . $gallery->image) }}"
-                                    class="w-20 h-20">
+                                    class="object-cover w-20 h-20">
                                 </th>
                                 <td class="px-6 py-4">
                                     {{ $gallery->caption }}

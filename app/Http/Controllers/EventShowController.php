@@ -14,6 +14,6 @@ class EventShowController extends Controller
     {
         $event = Event::findOrFail($id);
 
-        return view('event.show', compact('event'));
+        return view('eventsShow', compact('event'));
     }
 }

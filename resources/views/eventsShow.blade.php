@@ -16,12 +16,26 @@
 
                     <a href="#"
                         class="block mt-4 text-2xl font-semibold text-gray-800 hover:underline dark:text-white md:text-3xl">
-                        All the features you want to know
+                        {{ $event->title }}
                     </a>
 
                     <p class="mt-3 text-sm text-gray-500 dark:text-gray-300 md:text-sm">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure veritatis sint autem nesciunt,
-                        laudantium quia tempore delect
+                        {{ $event->description }}
+                    </p>
+
+                    <p class="flex items-center mt-3 text-sm text-gray-500 dark:text-gray-300 md:text-sm">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+                        </svg>
+                        <span>{{ $event->country->name }}, {{ $event->city->name }}</span>
+                    </p>
+
+                    <p class="mt-3 text-sm text-gray-500 dark:text-gray-300 md:text-sm">
+                        <u>{{ $event->start_date }}</u> at <time>{{ $event->start_time }}</time>
                     </p>
 
                     <a href="#" class="inline-block mt-2 text-blue-500 underline hover:text-blue-400">Read
@@ -30,9 +44,9 @@
 
                     <!-- comment form -->
                     <div>
-                        <form class="w-full max-w-xl bg-white rounded-lg px-4 pt-2">
+                        <form class="w-full max-w-xl bg-white rounded-lg px-4 pt-2 dark:bg-gray-900">
                             <div class="flex flex-wrap -mx-3 mb-6">
-                                <h2 class="px-4 pt-3 pb-2 text-gray-800 text-lg">Add a new comment</h2>
+                                <h2 class="px-4 pt-3 pb-2 text-gray-800 text-lg dark:text-white">Add a new comment</h2>
                                 <div class="w-full md:w-full px-3 mb-2 mt-2">
                                     <textarea
                                         class="bg-gray-100 rounded border border-gray-400 leading-normal resize-none w-full h-20 py-2 px-3 font-medium placeholder-gray-700 focus:outline-none focus:bg-white"
@@ -98,8 +112,8 @@
                         alt="">
 
                     <div class="mx-4">
-                        <h1 class="text-sm text-gray-700 dark:text-gray-200">Amelia. Anderson</h1>
-                        <p class="text-sm text-gray-500 dark:text-gray-400">Lead Developer</p>
+                        <h1 class="text-sm text-gray-700 dark:text-gray-200">{{ $event->user->name }}</h1>
+                        <p class="text-sm text-gray-500 dark:text-gray-400">{{ $event->user->email }}</p>
                     </div>
                 </div>
             </div>

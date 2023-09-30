@@ -4,9 +4,16 @@
             <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
                 {{ __('Gallery') }}
             </h2>
-            <div>
-                <a href="{{ route('galleries.create') }}" class="dark:text-white hover:text-slate-200">New Gallery</a>
+
+            <a href="{{ route('galleries.create') }}"
+            class="group relative text-center pt-2 overflow-hidden rounded-lg bg-slate-100 dark:bg-slate-700 text-lg shadow-md sm:w-36 sm:h-10 md:w-48 md:h-12 lg:h-16 xl:h-16">
+            <div
+                class="absolute inset-0 w-3 bg-amber-400 transition-all duration-[250ms] ease-out group-hover:w-full">
             </div>
+            <span class="relative m-6 text-black group-hover:text-white">New Gallery</span>
+        </a>
+                {{-- <a href="{{ route('galleries.create') }}" class="dark:text-white hover:text-slate-200">New Gallery</a> --}}
+
         </div>
     </x-slot>
 

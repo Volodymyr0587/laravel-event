@@ -35,7 +35,7 @@
                     </p>
 
                     <p class="mt-3 text-sm text-gray-500 dark:text-gray-300 md:text-sm">
-                        <u>{{ $event->start_date }}</u> at <time>{{ $event->start_time }}</time>
+                        <u>{{ $event->start_date->format('d-m-Y') }}</u> at <time>{{ $event->start_time }}</time>
                     </p>
 
                     <a href="#" class="inline-block mt-2 text-blue-500 underline hover:text-blue-400">Read

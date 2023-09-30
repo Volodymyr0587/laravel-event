@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EventShowController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\WelcomeController;
 use App\Models\Country;
@@ -19,6 +20,7 @@ use App\Http\Controllers\ProfileController;
 */
 
 Route::get('/', WelcomeController::class)->name('welcome');
+Route::get('/event/{id}', EventShowController::class)->name('eventShow');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

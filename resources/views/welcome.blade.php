@@ -28,5 +28,9 @@
                 @endforeach
             </div>
         </div>
+        {{-- pagination  --}}
+        <div class="m-2 p-2">
+            {{ $events->links() }}
+        </div>
     </section>
 </x-main-layout>

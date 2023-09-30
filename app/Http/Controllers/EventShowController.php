@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Event;
 use Illuminate\Http\Request;
 
 class EventShowController extends Controller
@@ -9,8 +10,10 @@ class EventShowController extends Controller
     /**
      * Handle the incoming request.
      */
-    public function __invoke(Request $request)
+    public function __invoke($id)
     {
-        //
+        $event = Event::findOrFail($id);
+
+        return view('event.show', compact('event'));
     }
 }

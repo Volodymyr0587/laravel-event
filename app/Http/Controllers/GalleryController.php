@@ -13,7 +13,7 @@ class GalleryController extends Controller
      */
     public function index(): View
     {
-        $galleries = auth()->user()->galleries();
+        $galleries = auth()->user()->galleries;
         return view('galleries.index', compact('galleries'));
     }
 
@@ -30,7 +30,20 @@ class GalleryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'caption' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
+        if ($request->hasFile('image')) {
+            auth()->user()->galleries()->create([
+                'caption' => $request->input('caption'),
+                'image' => $request->file('image')->store('galleries', 'public'),
+            ]);
+
+            return to_route('galleries.index');
+        }
+        return back();
     }
 
     /**

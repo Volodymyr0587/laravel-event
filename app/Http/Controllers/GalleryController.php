@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Gallery;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -12,7 +13,8 @@ class GalleryController extends Controller
      */
     public function index(): View
     {
-        return view('galleries.index');
+        $galleries = auth()->user()->galleries();
+        return view('galleries.index', compact('galleries'));
     }
 
     /**

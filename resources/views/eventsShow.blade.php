@@ -78,10 +78,20 @@
                 </div>
 
                 @auth
-                    <div class="flex mt-4 space-x-4">
-                        <button
-                            class="group relative overflow-hidden rounded-lg bg-white text-lg shadow
-    sm:w-36 sm:h-10 md:w-48 md:h-12 lg:h-16 xl:h-16">
+                    <div class="flex mt-4 space-x-4" x-data="{
+                        eventLike: @js($like),
+                        city: null,
+                        cities: [],
+                        onHandleLike() {
+                            axios.post(`/events-like/{{ $event->id }}`).then(res => {
+                                this.eventLike = res.data
+                            })
+
+                        }
+                    }">
+                        <button @click="onHandleLike"
+                            class="group relative overflow-hidden rounded-lg text-lg shadow
+    sm:w-36 sm:h-10 md:w-48 md:h-12 lg:h-16 xl:h-16" :class="eventLike ? 'bg-red-700' : 'bg-white'">
                             <div
                                 class="absolute inset-0 w-3 bg-amber-400 transition-all duration-[250ms] ease-out group-hover:w-full">
                             </div>

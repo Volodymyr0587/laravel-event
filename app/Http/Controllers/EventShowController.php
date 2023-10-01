@@ -13,7 +13,7 @@ class EventShowController extends Controller
     public function __invoke($id)
     {
         $event = Event::findOrFail($id);
-
-        return view('eventsShow', compact('event'));
+        $like = $event->likes()->where('user_id', auth()->id())->first();
+        return view('eventsShow', compact('event', 'like'));
     }
 }

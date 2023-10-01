@@ -80,34 +80,43 @@
                 @auth
                     <div class="flex mt-4 space-x-4" x-data="{
                         eventLike: @js($like),
-                        city: null,
-                        cities: [],
+                        savedEvent: @js($savedEvent),
+                        attending: @js($attending),
                         onHandleLike() {
                             axios.post(`/events-like/{{ $event->id }}`).then(res => {
                                 this.eventLike = res.data
                             })
-
+                        },
+                        onHandleSavedEvent() {
+                            axios.post(`/events-save/{{ $event->id }}`).then(res => {
+                                this.savedEvent = res.data
+                            })
+                        },
+                        onHandleAttending() {
+                            axios.post(`/events-attending/{{ $event->id }}`).then(res => {
+                                this.attending = res.data
+                            })
                         }
                     }">
                         <button @click="onHandleLike"
                             class="group relative overflow-hidden rounded-lg text-lg shadow
-    sm:w-36 sm:h-10 md:w-48 md:h-12 lg:h-16 xl:h-16" :class="eventLike ? 'bg-red-700' : 'bg-white'">
+    sm:w-36 sm:h-10 md:w-48 md:h-12 lg:h-16 xl:h-16" :class="eventLike ? 'bg-blue-400' : 'bg-white'">
                             <div
                                 class="absolute inset-0 w-3 bg-amber-400 transition-all duration-[250ms] ease-out group-hover:w-full">
                             </div>
                             <span class="relative text-black group-hover:text-white">Like</span>
                         </button>
-                        <button
-                            class="group relative overflow-hidden rounded-lg bg-white text-lg shadow
-    sm:w-36 sm:h-10 md:w-48 md:h-12 lg:h-16 xl:h-16">
+                        <button @click="onHandleSavedEvent"
+                            class="group relative overflow-hidden rounded-lg text-lg shadow
+    sm:w-36 sm:h-10 md:w-48 md:h-12 lg:h-16 xl:h-16" :class="savedEvent ? 'bg-blue-400' : 'bg-white'">
                             <div
                                 class="absolute inset-0 w-3 bg-amber-400 transition-all duration-[250ms] ease-out group-hover:w-full">
                             </div>
                             <span class="relative text-black group-hover:text-white">Save</span>
                         </button>
-                        <button
-                            class="group relative overflow-hidden rounded-lg bg-white text-lg shadow
-    sm:w-36 sm:h-10 md:w-48 md:h-12 lg:h-16 xl:h-16">
+                        <button @click="onHandleAttending"
+                            class="group relative overflow-hidden rounded-lg text-lg shadow
+    sm:w-36 sm:h-10 md:w-48 md:h-12 lg:h-16 xl:h-16" :class="attending ? 'bg-blue-400' : 'bg-white'">
                             <div
                                 class="absolute inset-0 w-3 bg-amber-400 transition-all duration-[250ms] ease-out group-hover:w-full">
                             </div>

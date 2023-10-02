@@ -148,7 +148,7 @@
         <!-- display comment -->
         @foreach ($event->comments as $comment)
             <!-- component -->
-            <div class="m-10 bg-gray-100 flex items-center justify-center">
+            <div class="m-10 bg-gray-100 dark:bg-gray-900 flex items-center justify-center">
                 <div class="px-10">
                     <div
                         class="bg-white max-w-xl rounded-2xl px-10 py-8 shadow-lg hover:shadow-2xl transition duration-500">
@@ -191,8 +191,8 @@
                                             alt="" />
                                     </div>
                                     <div class="text-sm font-semibold">{{ $comment->user->name }} • <span
-                                            class="font-normal"> 5
-                                            minutes ago</span></div>
+                                            class="font-normal">
+                                        {{ $comment->created_at->diffForHumans() }}</span></div>
                                 </div>
 
                                 @if (Auth::user()->id === $comment->user_id)

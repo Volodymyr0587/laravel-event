@@ -50,15 +50,13 @@
                                         <a href="{{ route('galleries.edit', $gallery) }}"
                                             class="text-green-400 hover:text-green-600">Edit</a>
                                         <form method="POST" action="{{ route('galleries.destroy', $gallery) }}"
-                                            class="text-red-400 hover:text-red-600">
+                                            class="text-red-400 hover:text-red-600"
+                                            onsubmit="return confirm('Are you sure?');">
                                             @csrf
                                             @method('DELETE')
-                                            <a href="{{ route('galleries.destroy', $gallery) }}"
-                                                onclick="event.preventDefault(); confirm('Are you sure?');
-                                                            this.closest('form').submit();"
-                                                >
+                                            <button type="submit">
                                                 Delete
-                                            </a>
+                                            </button>
                                         </form>
                                     </div>
                                 </td>

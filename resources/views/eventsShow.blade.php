@@ -38,7 +38,8 @@
                     </p>
 
                     <p class="mt-3 text-sm text-gray-500 dark:text-gray-300 md:text-sm">
-                        From: <u>{{ $event->start_date->format('d-m-Y') }}</u> at <time>{{ $event->start_time }}</time> To: <u>{{ $event->end_date->format('d-m-Y') }}</u>
+                        From: <u>{{ $event->start_date->format('d-m-Y') }}</u> at <time>{{ $event->start_time }}</time>
+                        To: <u>{{ $event->end_date->format('d-m-Y') }}</u>
                     </p>
 
                     <a href="#" class="inline-block mt-2 text-blue-500 underline hover:text-blue-400">Read
@@ -198,10 +199,9 @@
                                             {{ $comment->created_at->diffForHumans() }}</span></div>
                                 </div>
 
-                                @if (Auth::user()->id === $comment->user_id)
+                                @can('view', $comment)
                                     <div>
-                                        <form
-                                            action="{{ route('events.comments.destroy', [$event->id, $comment->id]) }}"
+                                        <form action="{{ route('events.comments.destroy', [$event->id, $comment->id]) }}"
                                             method="post">
                                             @csrf
                                             @method('DELETE')
@@ -214,7 +214,7 @@
                                             </button>
                                         </form>
                                     </div>
-                                @endif
+                                @endcan
                             </div>
                         </div>
                     </div>

@@ -3,16 +3,19 @@
     <!-- component -->
     <section class="bg-white dark:bg-gray-900">
         <div class="container px-6 py-10 mx-auto">
-            <h1 class="text-3xl font-semibold text-gray-800 capitalize lg:text-4xl dark:text-white">From the blog</h1>
+            <h1 class="text-3xl font-semibold text-gray-800 capitalize lg:text-4xl dark:text-white">{{ $event->title }}
+            </h1>
 
             <div class="mt-8 lg:-mx-6 lg:flex lg:items-center">
                 <img class="object-cover w-full lg:mx-6 lg:w-1/2 rounded-xl h-72 lg:h-96"
                     src="{{ asset('/storage/' . $event->image) }}" alt="">
 
-
-
                 <div class="mt-6 lg:w-1/2 lg:mt-0 lg:mx-6 ">
-                    <p class="text-sm text-blue-500 uppercase">category</p>
+
+                    @foreach ($event->tags as $tag)
+                        <div class="text-sm text-blue-500 uppercase inline-block">{{ $tag->name }}</div>
+                    @endforeach
+
 
                     <a href="#"
                         class="block mt-4 text-2xl font-semibold text-gray-800 hover:underline dark:text-white md:text-3xl">
@@ -35,7 +38,7 @@
                     </p>
 
                     <p class="mt-3 text-sm text-gray-500 dark:text-gray-300 md:text-sm">
-                        <u>{{ $event->start_date->format('d-m-Y') }}</u> at <time>{{ $event->start_time }}</time>
+                        From: <u>{{ $event->start_date->format('d-m-Y') }}</u> at <time>{{ $event->start_time }}</time> To: <u>{{ $event->end_date->format('d-m-Y') }}</u>
                     </p>
 
                     <a href="#" class="inline-block mt-2 text-blue-500 underline hover:text-blue-400">Read
@@ -146,7 +149,7 @@
         </div>
 
         <!-- display comment -->
-        @foreach ($event->comments as $comment)
+        @foreach ($event->comments()->latest()->get() as $comment)
             <!-- component -->
             <div class="m-10 bg-gray-100 dark:bg-gray-900 flex items-center justify-center">
                 <div class="px-10">
@@ -192,7 +195,7 @@
                                     </div>
                                     <div class="text-sm font-semibold">{{ $comment->user->name }} • <span
                                             class="font-normal">
-                                        {{ $comment->created_at->diffForHumans() }}</span></div>
+                                            {{ $comment->created_at->diffForHumans() }}</span></div>
                                 </div>
 
                                 @if (Auth::user()->id === $comment->user_id)

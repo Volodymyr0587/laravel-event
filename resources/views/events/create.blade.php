@@ -28,7 +28,7 @@
                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Title</label>
                         <input type="text" id="title" name="title"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                            placeholder="Laravel event">
+                            placeholder="Laravel event" value="{{ old('title', request()->title) }}">
                         @error('title')
                             <div class="text-sm text-red-400">{{ $message }}</div>
                         @enderror
@@ -67,7 +67,7 @@
                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Address</label>
                         <input type="text" id="address" name="address"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                            placeholder="Laravel event">
+                            placeholder="Laravel event" value="{{ old('address', request()->address) }}">
                         @error('address')
                             <div class="text-sm text-red-400">{{ $message }}</div>
                         @enderror
@@ -87,7 +87,7 @@
                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Start Date</label>
                         <input type="date" id="start_date" name="start_date"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                            placeholder="Laravel event">
+                            placeholder="Laravel event" value="{{ old('start_date', request()->start_date) }}">
                         @error('start_date')
                             <div class="text-sm text-red-400">{{ $message }}</div>
                         @enderror
@@ -97,7 +97,7 @@
                             Date</label>
                         <input type="date" id="end_date" name="end_date"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                            placeholder="Laravel event">
+                            placeholder="Laravel event" value="{{ old('end_date', request()->end_date) }}">
                         @error('end_date')
                             <div class="text-sm text-red-400">{{ $message }}</div>
                         @enderror
@@ -108,7 +108,7 @@
                             Time</label>
                         <input type="time" id="start_time" name="start_time"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                            placeholder="Laravel event">
+                            placeholder="Laravel event" value="{{ old('start_time', request()->start_time) }}">
                         @error('start_time')
                             <div class="text-sm text-red-400">{{ $message }}</div>
                         @enderror
@@ -118,7 +118,7 @@
                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nr: Tickets</label>
                         <input type="number" id="num_tickets" name="num_tickets"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                            placeholder="1">
+                            placeholder="1" value="{{ old('num_tickets', request()->num_tickets) }}">
                         @error('num_tickets')
                             <div class="text-sm text-red-400">{{ $message }}</div>
                         @enderror
@@ -128,7 +128,7 @@
                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Description</label>
                         <textarea id="description" name="description" rows="4"
                             class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                            placeholder="Write your thoughts here..."></textarea>
+                            placeholder="Write your thoughts here...">{{ old('description', request()->description) }}</textarea>
                         @error('description')
                             <div class="text-sm text-red-400">{{ $message }}</div>
                         @enderror

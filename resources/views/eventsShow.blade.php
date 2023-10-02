@@ -194,19 +194,24 @@
                                             class="font-normal"> 5
                                             minutes ago</span></div>
                                 </div>
-                                <div>
-                                    <form action="{{ route('events.comments.destroy', [$event->id, $comment->id]) }}" method="post">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button
-                                            class="ml-4 group relative overflow-hidden rounded-lg text-lg shadow sm:w-36 sm:h-10 md:w-48 md:h-12 lg:h-16 xl:h-16">
-                                            <div
-                                                class="absolute inset-0 w-3 bg-red-400 transition-all duration-[250ms] ease-out group-hover:w-full">
-                                            </div>
-                                            <span class="relative text-black group-hover:text-white">Delete</span>
-                                        </button>
-                                    </form>
-                                </div>
+
+                                @if (Auth::user()->id === $comment->user_id)
+                                    <div>
+                                        <form
+                                            action="{{ route('events.comments.destroy', [$event->id, $comment->id]) }}"
+                                            method="post">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button
+                                                class="ml-4 group relative overflow-hidden rounded-lg text-lg shadow sm:w-36 sm:h-10 md:w-48 md:h-12 lg:h-16 xl:h-16">
+                                                <div
+                                                    class="absolute inset-0 w-3 bg-red-400 transition-all duration-[250ms] ease-out group-hover:w-full">
+                                                </div>
+                                                <span class="relative text-black group-hover:text-white">Delete</span>
+                                            </button>
+                                        </form>
+                                    </div>
+                                @endif
                             </div>
                         </div>
                     </div>

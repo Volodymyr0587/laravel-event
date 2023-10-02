@@ -5,14 +5,14 @@
                 {{ __('Events') }}
             </h2>
 
-                <a href="{{ route('events.create') }}"
-                    class="group relative text-center pt-2 overflow-hidden rounded-lg bg-slate-100 dark:bg-slate-700 text-lg shadow-md sm:w-36 sm:h-10 md:w-48 md:h-12 lg:h-16 xl:h-16">
-                    <div
-                        class="absolute inset-0 w-3 bg-amber-400 transition-all duration-[250ms] ease-out group-hover:w-full">
-                    </div>
-                    <span class="relative m-6 text-black group-hover:text-white">New Event</span>
-                </a>
-                {{-- <a href="{{ route('events.create') }}" class="dark:text-white hover:text-slate-200">New Event</a> --}}
+            <a href="{{ route('events.create') }}"
+                class="group relative text-center pt-2 overflow-hidden rounded-lg bg-slate-100 dark:bg-slate-700 text-lg shadow-md sm:w-36 sm:h-10 md:w-48 md:h-12 lg:h-16 xl:h-16">
+                <div
+                    class="absolute inset-0 w-3 bg-amber-400 transition-all duration-[250ms] ease-out group-hover:w-full">
+                </div>
+                <span class="relative m-6 text-black group-hover:text-white">New Event</span>
+            </a>
+            {{-- <a href="{{ route('events.create') }}" class="dark:text-white hover:text-slate-200">New Event</a> --}}
 
         </div>
     </x-slot>
@@ -55,14 +55,13 @@
                                         <a href="{{ route('events.edit', $event) }}"
                                             class="text-green-400 hover:text-green-600">Edit</a>
                                         <form method="POST" action="{{ route('events.destroy', $event) }}"
-                                            class="text-red-400 hover:text-red-600">
+                                            class="text-red-400 hover:text-red-600"
+                                            onsubmit="return confirm('Are you sure?');">
                                             @csrf
                                             @method('DELETE')
-                                            <a href="{{ route('events.destroy', $event) }}"
-                                                onclick="event.preventDefault(); confirm('Are you sure?');
-                                                            this.closest('form').submit();">
+                                            <button type="submit">
                                                 Delete
-                                            </a>
+                                            </button>
                                         </form>
                                     </div>
                                 </td>

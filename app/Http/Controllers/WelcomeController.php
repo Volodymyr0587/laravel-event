@@ -11,7 +11,7 @@ class WelcomeController extends Controller
      */
     public function __invoke()
     {
-        $events = Event::with('country', 'tags')->orderBy('created_at', 'desc')->paginate(4);
+        $events = Event::with('country', 'tags')->where('start_date', '>=', today())->orderBy('created_at', 'desc')->paginate(4);
 
         return view('welcome', compact('events'));
     }

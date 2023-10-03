@@ -2,8 +2,10 @@
 
 use App\Http\Controllers\AttendingSystemController;
 use App\Http\Controllers\DeleteCommentController;
+use App\Http\Controllers\EventIndexController;
 use App\Http\Controllers\EventShowController;
 use App\Http\Controllers\GalleryController;
+use App\Http\Controllers\GalleryIndexController;
 use App\Http\Controllers\LikeSystemController;
 use App\Http\Controllers\SaveSystemController;
 use App\Http\Controllers\StoreCommentController;
@@ -25,7 +27,9 @@ use App\Http\Controllers\ProfileController;
 */
 
 Route::get('/', WelcomeController::class)->name('welcome');
+Route::get('/e', EventIndexController::class)->name('eventIndex');
 Route::get('/event/{id}', EventShowController::class)->name('eventShow');
+Route::get('/gallery', GalleryIndexController::class)->name('galleryIndex');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

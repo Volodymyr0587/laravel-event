@@ -21,6 +21,9 @@
                     <x-nav-link :href="route('galleries.index')" :active="request()->routeIs('galleries.index')">
                         {{ __('Gallery') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('likedEvents')" :active="request()->routeIs('likedEvents')">
+                        {{ __('Liked Events') }}
+                    </x-nav-link>
                 </div>
             </div>
 

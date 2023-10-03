@@ -15,6 +15,6 @@ class LikedEventController extends Controller
             $q->where('user_id', auth()->id());
         })->get();
 
-        return view('likedEvents', compact('events'));
+        return view('events.likedEvents', compact('events'));
     }
 }
